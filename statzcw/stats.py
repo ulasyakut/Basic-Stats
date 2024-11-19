@@ -6,16 +6,20 @@ def zcount(data: List[float]) -> float :
     return len(data)
 
 def zmean(data: List[float]) -> float :
-    return sum(data)/len(List)
+    return sum(data)/len(data)
 
 def zmode(data: List[float]) -> float :
+    
     items = {}
     for i in data:
         if i not in items:
             items[i] = data.count(i)
 
     max_value = max(items.values())
-    return data.get(max_value)
+    
+    for k in items:
+        if items[k] == max_value:
+            return k
 
 
 def zmedian(data: List[float]) -> float :
