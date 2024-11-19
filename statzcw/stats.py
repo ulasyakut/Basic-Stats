@@ -2,16 +2,24 @@
 from typing import List
 
 def zcount(data: List[float]) -> float :
-    pass
+    return len(data)
 
 def zmean(data: List[float]) -> float :
-    pass
+    return sum(data)/len(List)
 
 def zmode(data: List[float]) -> float :
-    pass
+    items = {}
+    for i in data:
+        if i not in items:
+            items[i] = data.count(i)
+
+    max_value = max(items.values())
+    return data.get(max_value)
+
 
 def zmedian(data: List[float]) -> float :
-    pass
+    index_value = int((len(data)-1)/2)
+    return data[index_value]
 
 def zvariance(data: List[float]) -> float :
     pass
@@ -39,7 +47,8 @@ def readDataFile(file):
             #print(row, type(row))
             x.append(float(row[0]))
             y.append(float(row[1]))
-    return (x,y)
+
+    return (x,y) #we have two lists containing values
 
 def readDataSets(files):
     data = {}
@@ -47,3 +56,4 @@ def readDataSets(files):
         twoLists = readDataFile(file)
         data[file] = twoLists
     return data
+
